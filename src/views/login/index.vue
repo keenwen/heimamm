@@ -37,7 +37,7 @@
           <el-button class="loginbtn" type="primary" @click="onSubmit">登录</el-button>
         </el-form-item>
         <el-form-item>
-          <el-button class="loginbtn" type="primary">注册</el-button>
+          <el-button class="loginbtn" type="primary" @click="register">注册</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -84,6 +84,9 @@ export default {
           return false;
         }
       });
+    },
+    register(){
+      
     }
   }
 };
