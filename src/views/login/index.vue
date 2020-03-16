@@ -26,8 +26,8 @@
             </el-col>
           </el-row>
         </el-form-item>
-        <el-form-item prop="isCheck" class="checkboxheight" >
-          <el-checkbox class="textColor" v-model="form.isCheck" >
+        <el-form-item prop="isCheck" class="checkboxheight">
+          <el-checkbox class="textColor" v-model="form.isCheck">
             我已阅读并同意
             <el-link type="primary">用户协议</el-link>和
             <el-link type="primary">隐私条款</el-link>
@@ -42,10 +42,13 @@
       </el-form>
     </div>
     <img class="rightimg" src="../../assets/login_banner_ele.png" alt />
+
+   <register ref="register"></register>
   </div>
 </template>
 
 <script>
+import register from "./components/register";
 export default {
   data() {
     return {
@@ -65,9 +68,19 @@ export default {
           { required: true, message: "验证码不能为空！", trigger: "blur" },
           { min: 4, max: 4, message: "验证码错误", trigger: "blur" }
         ],
-        isCheck:[{type:"array", required:true,message:"请确认条款并阅读用户协议",trigger:"change"}]
+        isCheck: [
+          {
+            type: "array",
+            required: true,
+            message: "请确认条款并阅读用户协议",
+            trigger: "change"
+          }
+        ]
       }
     };
+  },
+  components: {
+    register
   },
   methods: {
     //点击登录
@@ -76,17 +89,17 @@ export default {
       this.$refs.form.validate(valid => {
         if (valid) {
           this.$message({
-            message:"登陆成功！",
-            type:"success"
-          })
+            message: "登陆成功！",
+            type: "success"
+          });
         } else {
-      this.$message.error('登录失败！');
+          this.$message.error("登录失败！");
           return false;
         }
       });
     },
-    register(){
-      
+    register() {
+      this.$refs.register.dialogFormVisible=true
     }
   }
 };

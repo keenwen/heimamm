@@ -3,6 +3,7 @@ import Vue from 'vue'
 import login from '../views/login/index.vue'
 import useElement from '../views/useElement/useElement.vue'
 
+
 Vue.use(VueRouter)
 // 防止同路由点击报错
 const routerPush = VueRouter.prototype.push
@@ -21,6 +22,7 @@ const router = new VueRouter({
         path:'*',
         redirect:"/login"
     }
+   
 ]
 
 })
