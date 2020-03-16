@@ -62,7 +62,7 @@ export default {
           { min: 5, max: 10, message: "密码长度为5~10字符", trigger: "blur" }
         ],
         logincode: [
-          { required: true, message: "验证码不能为空", trigger: "blur" },
+          { required: true, message: "验证码不能为空！", trigger: "blur" },
           { min: 4, max: 4, message: "验证码错误", trigger: "blur" }
         ],
         isCheck:[{type:"array", required:true,message:"请确认条款并阅读用户协议",trigger:"change"}]
