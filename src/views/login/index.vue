@@ -13,7 +13,12 @@
           <el-input prefix-icon="el-icon-user" placeholder="请输入手机号" v-model="form.phone"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input prefix-icon="el-icon-lock" placeholder="请输入密码" v-model="form.password"></el-input>
+          <el-input
+            type="password"
+            prefix-icon="el-icon-lock"
+            placeholder="请输入密码"
+            v-model="form.password"
+          ></el-input>
         </el-form-item>
         <el-form-item prop="logincode">
           <!-- 使用栅格系统 -->
@@ -22,7 +27,7 @@
               <el-input prefix-icon="el-icon-key" placeholder="请输入验证码" v-model="form.logincode"></el-input>
             </el-col>
             <el-col :span="8">
-              <img class="loginCode" src="../../assets/login_captcha.png" alt />
+              <img class="loginCode" @click="changeimg" :src="imgUrl" alt />
             </el-col>
           </el-row>
         </el-form-item>
@@ -43,7 +48,7 @@
     </div>
     <img class="rightimg" src="../../assets/login_banner_ele.png" alt />
 
-   <register ref="register"></register>
+    <register ref="register"></register>
   </div>
 </template>
 
@@ -76,7 +81,9 @@ export default {
             trigger: "change"
           }
         ]
-      }
+      },
+    
+       imgUrl: process.env.VUE_APP_URL + "/captcha?type=sendsms&t=" + Date.now() //时间戳
     };
   },
   components: {
@@ -98,8 +105,12 @@ export default {
         }
       });
     },
+    changeimg(){
+      this.imgUrl=process.env.VUE_APP_ONLINEURL + "/captcha?type=sendsms&t=" + Date.now() //时间戳
+
+    },
     register() {
-      this.$refs.register.dialogFormVisible=true
+      this.$refs.register.dialogFormVisible = true;
     }
   }
 };
